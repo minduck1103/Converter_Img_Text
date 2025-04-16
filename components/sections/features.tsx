@@ -14,7 +14,7 @@ const features = [
   {
     icon: <Zap className="h-10 w-10 text-blue-600" />,
     title: "Instant Processing",
-    description: "Our advanced algorithms process your images in seconds, saving you valuable time.",
+    description: "Powered by Google's Gemini 1.5 Flash AI, our advanced algorithms process your images in seconds.",
   },
   {
     icon: <Shield className="h-10 w-10 text-blue-600" />,
@@ -29,7 +29,7 @@ const features = [
   {
     icon: <CheckCircle className="h-10 w-10 text-blue-600" />,
     title: "High Accuracy",
-    description: "Our AI-powered OCR delivers industry-leading accuracy, even with difficult images.",
+    description: "Our Gemini-powered OCR delivers industry-leading accuracy, even with difficult images.",
   },
 ]
 

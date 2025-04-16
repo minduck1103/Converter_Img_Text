@@ -1,11 +1,6 @@
 "use server"
 
-import OpenAI from "openai"
-
-// Khởi tạo OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+import { extractTextWithGemini } from "@/lib/gemini-ai"
 
 export async function extractTextFromImage(imageBase64: string) {
   console.log("Server action called with image data length:", imageBase64.length)
@@ -20,67 +15,21 @@ export async function extractTextFromImage(imageBase64: string) {
       }
     }
 
-    // Tách phần base64 từ data URL
-    const base64Data = imageBase64.split(",")[1]
+    console.log("Calling Gemini API...")
 
-    if (!base64Data) {
-      console.error("Could not extract base64 data from image")
-      return {
-        success: false,
-        error: "Không thể xử lý dữ liệu hình ảnh",
-      }
-    }
+    // Gọi Gemini API để trích xuất văn bản
+    const result = await extractTextWithGemini(imageBase64)
 
-    console.log("Extracted base64 data, length:", base64Data.length)
-    console.log("Calling OpenAI API with model gpt-4o...")
+    console.log("Gemini API response received:", result.success)
 
-    // Gọi OpenAI API với mô hình gpt-4o thay vì gpt-4-vision-preview
-    const response = await openai.chat.completions.create({
-      model: "gpt-4o", // Cập nhật mô hình từ gpt-4-vision-preview sang gpt-4o
-      messages: [
-        {
-          role: "user",
-          content: [
-            {
-              type: "text",
-              text: "Extract all text from this image. Return only the extracted text without any additional comments.",
-            },
-            {
-              type: "image_url",
-              image_url: {
-                url: `data:image/jpeg;base64,${base64Data}`,
-              },
-            },
-          ],
-        },
-      ],
-      max_tokens: 1000,
-    })
-
-    console.log("OpenAI API response received")
-
-    if (!response.choices || response.choices.length === 0) {
-      console.error("Empty response from OpenAI API")
-      return {
-        success: false,
-        error: "Không nhận được phản hồi từ API",
-      }
-    }
-
-    return {
-      success: true,
-      text: response.choices[0].message.content,
-    }
+    return result
   } catch (error: any) {
-    console.error("Error extracting text:", error)
+    console.error("Error in extract-text action:", error)
 
     // Trả về thông báo lỗi chi tiết hơn
     let errorMessage = "Có lỗi xảy ra khi trích xuất văn bản"
 
-    if (error.response) {
-      console.error("OpenAI API error response:", error.response.data)
-      errorMessage = `Lỗi API: ${error.response.data?.error?.message || error.message}`
-    } else if (error.message) {
+    if (error.message) {
       errorMessage = `Lỗi: ${error.message}`
     }
 

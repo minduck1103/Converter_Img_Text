@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/">
+        <Link href="/"> 
           <div className="flex items-center gap-2">
             <ImageIcon className="h-6 w-6 text-blue-600" />
             <span className="text-xl font-bold text-blue-600">ImageToText</span>
@@ -30,11 +30,9 @@ export default function Header() {
           <Link href="https://nextjs.org/docs" className="text-sm font-medium hover:text-blue-600 transition-colors">
             Docs
           </Link>
-          <Button className="bg-blue-600 hover:bg-blue-700">
-            <Link href="/demo">
-              Get Started
-            </Link>
-          </Button>
+          <Link href="/demo">
+            <Button className="bg-blue-600 hover:bg-blue-700">Get Started</Button>
+          </Link>
         </div>
       </div>
     </header>

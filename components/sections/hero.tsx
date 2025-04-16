@@ -50,10 +50,12 @@ export default function Hero() {
               </div>
               <div className="p-6 space-y-4">
                 <div className="flex items-center justify-center border-2 border-dashed border-blue-200 rounded-lg p-8 bg-blue-50">
-                  <div className="text-center">
-                    <ImageIcon className="mx-auto h-12 w-12 text-blue-400" />
-                    <p className="mt-2 text-sm text-gray-500">Drag & drop your image here</p>
-                  </div>
+                  <Link href="/demo">
+                    <div className="text-center">
+                      <ImageIcon className="mx-auto h-12 w-12 text-blue-400" />
+                      <p className="mt-2 text-sm text-gray-500">Drag & drop your image here</p>
+                    </div>
+                  </Link>
                 </div>
                 <div className="h-4 w-full rounded-full bg-gray-100"></div>
                 <div className="h-4 w-3/4 rounded-full bg-gray-100"></div>

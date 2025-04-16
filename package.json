@@ -1,5 +1,5 @@
 {
-  "name": "Converter",
+  "name": "my-v0-project",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -58,11 +58,10 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.6",
     "zod": "^3.24.1",
-    "ws": "latest",
     "file-saver": "latest",
     "docx": "latest",
     "jspdf": "latest",
-    "openai": "latest"
+    "@google/generative-ai": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",

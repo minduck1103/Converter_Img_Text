@@ -1,11 +1,9 @@
 import Header from "@/components/header"
 import Hero from "@/components/sections/hero"
-import TrustedBy from "@/components/sections/trusted-by"
 import Features from "@/components/sections/features"
 import HowItWorks from "@/components/sections/how-it-works"
 import Pricing from "@/components/sections/pricing"
 import Faq from "@/components/sections/faq"
-import Cta from "@/components/sections/cta"
 import Newsletter from "@/components/sections/newsletter"
 import Footer from "@/components/footer"
 

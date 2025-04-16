@@ -66,10 +66,10 @@ export default function Footer() {
           <p className="text-xs text-gray-600">&copy; {new Date().getFullYear()} ImageToText. Product created by MinhDuc.</p>
           <div className="mt-4 md:mt-0">
             <select className="text-xs text-gray-600 bg-transparent border-gray-200 rounded-md">
-              <option value="vi-en">Vietnamese</option>
+              <option value="vi">Vietnamese</option>
               <option value="en">English</option>
-              <option value="fr">Franch</option>
-              <option value="es">Español</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
             </select>
           </div>
         </div>

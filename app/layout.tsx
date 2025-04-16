@@ -3,8 +3,8 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Converter',
-  description: 'Convert text to image',
-  generator: 'MinhDuc',
+  description: 'Convert Image to Text',
+  generator: 'cud-dev',
 }
 
 export default function RootLayout({
