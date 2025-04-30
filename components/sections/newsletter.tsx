@@ -18,13 +18,13 @@ export default function Newsletter() {
           </div>
           <div className="flex flex-col justify-center space-y-4">
             <form className="flex flex-col gap-2 sm:flex-row">
-              <Input type="email" placeholder="Enter your email" className="flex-1" required />
+              <Input type="email" placeholder="Enter your email" className="flex-1" required suppressHydrationWarning />
               <Button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white">
                 Subscribe
               </Button>
             </form>
-            <p className="text-xs text-gray-500">
-              By subscribing, you agree to our Terms of Service and Privacy Policy.
+            <p className="text-sm text-blue-900/80 font-medium pt-2" style={{fontFamily: 'Inter, Roboto, Arial, sans-serif', letterSpacing: 0.1}}>
+              By subscribing, you agree to our <a href="#" className="underline hover:text-blue-700">Terms of Service</a> and <a href="#" className="underline hover:text-blue-700">Privacy Policy</a>.
             </p>
           </div>
         </div>
