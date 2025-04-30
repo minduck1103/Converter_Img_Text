@@ -49,30 +49,30 @@ function DemoPage() {
   const getTitle = () => {
     switch (type) {
       case "text":
-        return "Trích xuất văn bản từ hình ảnh"
+        return "Extract text from image"
       case "code":
-        return "Chuyển đổi hình ảnh sang mã nguồn"
+        return "Convert image to source code"
       case "table":
-        return "Chuyển đổi hình ảnh bảng sang dữ liệu"
+        return "Convert table image to data"
       case "math":
-        return "Chuyển đổi hình ảnh công thức toán học"
+        return "Convert math formula image"
       default:
-        return "Trích xuất văn bản từ hình ảnh"
+        return "Extract text from image"
     }
   }
 
   const getDescription = () => {
     switch (type) {
       case "text":
-        return "Tải lên hình ảnh của bạn và chúng tôi sẽ trích xuất tất cả văn bản có trong đó."
+        return "Upload your image and we will extract all the text within it."
       case "code":
-        return "Tải lên hình ảnh chứa mã nguồn và chúng tôi sẽ chuyển đổi thành mã nguồn thực tế."
+        return "Upload an image containing source code and we will convert it into actual source code."
       case "table":
-        return "Tải lên hình ảnh bảng và chúng tôi sẽ chuyển đổi thành dữ liệu có cấu trúc."
+        return "Upload a table image and we will convert it into structured data."
       case "math":
-        return "Tải lên hình ảnh công thức toán học và chúng tôi sẽ chuyển đổi thành LaTeX."
+        return "Upload an image of a math formula and we will convert it into LaTeX."
       default:
-        return "Tải lên hình ảnh của bạn và chúng tôi sẽ trích xuất tất cả văn bản có trong đó."
+        return "Upload your image and we will extract all the text within it."
     }
   }
 
@@ -94,15 +94,15 @@ function DemoPage() {
   const getInfoMessage = () => {
     switch (type) {
       case "text":
-        return "Hệ thống sử dụng mô hình Gemini 1.5 Pro của Google để trích xuất văn bản từ hình ảnh với độ chính xác cao và tốc độ nhanh."
+        return "The system uses Google's Gemini 1.5 Pro model to extract text from images with high accuracy and speed."
       case "code":
-        return "Hệ thống sử dụng mô hình Gemini 1.5 Pro của Google để nhận diện và trích xuất mã nguồn từ hình ảnh, hỗ trợ nhiều ngôn ngữ lập trình khác nhau."
+        return "The system uses Google's Gemini 1.5 Pro model to recognize and extract source code from images, supporting various programming languages."
       case "table":
-        return "Hệ thống sử dụng mô hình Gemini 1.5 Pro của Google để nhận diện cấu trúc bảng và chuyển đổi thành dữ liệu có cấu trúc như CSV hoặc JSON."
+        return "The system uses Google's Gemini 1.5 Pro model to recognize table structures and convert them into structured data like CSV or JSON."
       case "math":
-        return "Hệ thống sử dụng mô hình Gemini 1.5 Pro của Google để nhận diện công thức toán học và chuyển đổi thành định dạng LaTeX."
+        return "The system uses Google's Gemini 1.5 Pro model to recognize math formulas and convert them into LaTeX format."
       default:
-        return "Hệ thống sử dụng mô hình Gemini 1.5 Pro của Google để trích xuất văn bản từ hình ảnh với độ chính xác cao và tốc độ nhanh."
+        return "The system uses Google's Gemini 1.5 Pro model to extract text from images with high accuracy and speed."
     }
   }
 
@@ -152,11 +152,11 @@ function DemoPage() {
             setProgress(100)
             setShowResult(true)
           } else {
-            setError(result.error || "Có lỗi xảy ra khi trích xuất văn bản")
+            setError(result.error || "An error occurred while extracting text")
           }
         } catch (err: any) {
           console.error("Error processing image:", err)
-          setError(`Lỗi xử lý hình ảnh: ${err.message}`)
+          setError(`Error processing image: ${err.message}`)
         } finally {
           clearInterval(progressInterval)
           setIsLoading(false)
@@ -165,7 +165,7 @@ function DemoPage() {
 
       reader.onerror = (err) => {
         console.error("FileReader error:", err)
-        setError("Không thể đọc tệp hình ảnh")
+        setError("Could not read image file")
         clearInterval(progressInterval)
         setIsLoading(false)
       }
@@ -173,7 +173,7 @@ function DemoPage() {
       reader.readAsDataURL(file)
     } catch (err: any) {
       console.error("Unexpected error:", err)
-      setError(`Lỗi không mong đợi: ${err.message}`)
+      setError(`Unexpected error: ${err.message}`)
       clearInterval(progressInterval)
       setIsLoading(false)
     }
@@ -193,17 +193,17 @@ function DemoPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-blue-50 to-white">
-      <div className="max-w-6xl mx-auto w-full"> 
+      <div className="max-w-6xl mx-auto w-full">
         <Header />
       </div>
       <main className="flex-1 max-w-6xl mx-auto py-8 px-4 md:py-12 pt-20">
-        <motion.div 
+        <motion.div
           className="space-y-8"
           variants={staggerContainer(0.1, 0.1)}
           initial="hidden"
           animate="show"
         >
-          <motion.div 
+          <motion.div
             className="mb-6 flex justify-start"
             variants={fadeIn('left', 0.1)}
           >
@@ -214,7 +214,7 @@ function DemoPage() {
               >
                 <span className="absolute left-0 top-0 w-full h-full rounded-full opacity-0 group-hover:opacity-20 group-hover:bg-white transition-all duration-300"></span>
                 <ArrowLeft className="mr-2 h-5 w-5 text-white drop-shadow-lg" />
-                <span className="drop-shadow-lg">Quay lại trang chủ</span>
+                <span className="drop-shadow-lg">Back to homepage</span>
               </a>
             </Link>
           </motion.div>
@@ -232,19 +232,19 @@ function DemoPage() {
                 <TabsList className="grid grid-cols-4 mb-8 bg-gradient-to-r from-cyan-100 via-blue-100 to-indigo-100 rounded-full shadow-inner">
                   <TabsTrigger value="text" className="flex items-center gap-2">
                     <FileText className="h-4 w-4" />
-                    <span>Văn bản</span>
+                    <span>Text</span>
                   </TabsTrigger>
                   <TabsTrigger value="code" className="flex items-center gap-2">
                     <Code2 className="h-4 w-4" />
-                    <span>Mã nguồn</span>
+                    <span>Code</span>
                   </TabsTrigger>
                   <TabsTrigger value="table" className="flex items-center gap-2">
                     <Table2 className="h-4 w-4" />
-                    <span>Bảng</span>
+                    <span>Table</span>
                   </TabsTrigger>
                   <TabsTrigger value="math" className="flex items-center gap-2">
                     <Calculator className="h-4 w-4" />
-                    <span>Toán học</span>
+                    <span>Math</span>
                   </TabsTrigger>
                 </TabsList>
                 <TabsContent value={activeTab} className="mt-0">
@@ -263,7 +263,7 @@ function DemoPage() {
                       {isLoading && (
                         <div className="mt-6 space-y-2">
                           <div className="flex justify-between text-sm text-cyan-700">
-                            <span>Đang xử lý hình ảnh...</span>
+                            <span>Processing image...</span>
                             <span>{progress}%</span>
                           </div>
                           <Progress value={progress} className="h-2 bg-cyan-100" />
@@ -272,7 +272,7 @@ function DemoPage() {
                       {error && (
                         <Alert variant="destructive" className="mt-6">
                           <AlertCircle className="h-4 w-4" />
-                          <AlertTitle>Lỗi</AlertTitle>
+                          <AlertTitle>Error</AlertTitle>
                           <AlertDescription>{error}</AlertDescription>
                         </Alert>
                       )}
@@ -294,70 +294,70 @@ function DemoPage() {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="grid md:grid-cols-4 gap-6 mt-12"
             variants={staggerContainer(0.1, 0.8)}
           >
-            <motion.div 
+            <motion.div
               className="bg-white p-6 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow"
               variants={fadeIn('up', 0.1)}
             >
               <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 mb-4">
                 <Zap className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="font-medium text-blue-800 mb-2 text-center">Tốc độ nhanh</h3>
+              <h3 className="font-medium text-blue-800 mb-2 text-center">Fast Speed</h3>
               <p className="text-sm text-gray-600 text-center">
-                Trích xuất văn bản từ hình ảnh trong vài giây với độ chính xác cao.
+                Extract text from images in seconds with high accuracy.
               </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="bg-white p-6 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow"
               variants={fadeIn('up', 0.2)}
             >
               <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 mb-4">
                 <Sparkles className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="font-medium text-blue-800 mb-2 text-center">AI tiên tiến</h3>
+              <h3 className="font-medium text-blue-800 mb-2 text-center">Advanced AI</h3>
               <p className="text-sm text-gray-600 text-center">
-                Sử dụng mô hình Gemini 1.5 Pro của Google để nhận diện và trích xuất văn bản.
+                Uses Google's Gemini 1.5 Pro model to recognize and extract text.
               </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="bg-white p-6 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow"
               variants={fadeIn('up', 0.3)}
             >
               <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 mb-4">
                 <Shield className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="font-medium text-blue-800 mb-2 text-center">Bảo mật</h3>
+              <h3 className="font-medium text-blue-800 mb-2 text-center">Secure</h3>
               <p className="text-sm text-gray-600 text-center">
-                Dữ liệu của bạn được xử lý an toàn và không được lưu trữ sau khi trích xuất.
+                Your data is processed securely and is not stored after extraction.
               </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="bg-white p-6 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow"
               variants={fadeIn('up', 0.4)}
             >
               <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 mb-4">
                 <Clock className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="font-medium text-blue-800 mb-2 text-center">Tiết kiệm thời gian</h3>
+              <h3 className="font-medium text-blue-800 mb-2 text-center">Time Saving</h3>
               <p className="text-sm text-gray-600 text-center">
-                Tự động hóa quá trình trích xuất văn bản, giúp bạn tiết kiệm thời gian và công sức.
+                Automates the text extraction process, saving you time and effort.
               </p>
             </motion.div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="bg-white p-6 rounded-xl border border-blue-100 shadow-sm mt-8"
             variants={fadeIn('up', 0.9)}
           >
             <h3 className="font-medium text-blue-800 mb-4 flex items-center">
               <Info className="h-5 w-5 mr-2 text-blue-600" />
-              Lưu ý quan trọng
+              Important Notes
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -365,13 +365,13 @@ function DemoPage() {
                   <div className="flex-shrink-0 mt-1">
                     <div className="w-2 h-2 rounded-full bg-blue-500"></div>
                   </div>
-                  <p className="text-sm text-gray-600 ml-2">Chất lượng trích xuất phụ thuộc vào độ rõ nét của hình ảnh</p>
+                  <p className="text-sm text-gray-600 ml-2">Extraction quality depends on the clarity of the image</p>
                 </div>
                 <div className="flex items-start">
                   <div className="flex-shrink-0 mt-1">
                     <div className="w-2 h-2 rounded-full bg-blue-500"></div>
                   </div>
-                  <p className="text-sm text-gray-600 ml-2">Hỗ trợ nhiều ngôn ngữ khác nhau</p>
+                  <p className="text-sm text-gray-600 ml-2">Supports various languages</p>
                 </div>
               </div>
               <div className="space-y-2">
@@ -379,20 +379,20 @@ function DemoPage() {
                   <div className="flex-shrink-0 mt-1">
                     <div className="w-2 h-2 rounded-full bg-blue-500"></div>
                   </div>
-                  <p className="text-sm text-gray-600 ml-2">Kết quả tốt nhất với văn bản in, có thể kém chính xác hơn với chữ viết tay</p>
+                  <p className="text-sm text-gray-600 ml-2">Best results with printed text, may be less accurate with handwriting</p>
                 </div>
                 <div className="flex items-start">
                   <div className="flex-shrink-0 mt-1">
                     <div className="w-2 h-2 rounded-full bg-blue-500"></div>
                   </div>
-                  <p className="text-sm text-gray-600 ml-2">Bạn có thể tải xuống kết quả dưới nhiều định dạng khác nhau sau khi trích xuất</p>
+                  <p className="text-sm text-gray-600 ml-2">You can download the results in various formats after extraction</p>
                 </div>
               </div>
             </div>
           </motion.div>
         </motion.div>
       </main>
-      <div className="max-w-6xl mx-auto w-full"> 
+      <div className="max-w-6xl mx-auto w-full">
         <Footer />
       </div>
 

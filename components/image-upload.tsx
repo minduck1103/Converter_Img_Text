@@ -81,16 +81,16 @@ export default function ImageUpload({ onImageUpload, isLoading }: ImageUploadPro
           )}
           <p className="text-sm text-gray-600">
             {isLoading ? (
-              "Đang xử lý..."
+              "Processing..."
             ) : (
               <>
-                Kéo thả hình ảnh vào đây hoặc{" "}
-                <span className="text-blue-500 font-medium">chọn file</span>
+                Drag and drop an image here, or{" "}
+                <span className="text-blue-500 font-medium">browse files</span>
               </>
             )}
           </p>
           <p className="text-xs text-gray-500">
-            Hỗ trợ: JPG, PNG, GIF (Tối đa 10MB)
+            Supported: JPG, PNG, GIF (Max 10MB)
           </p>
         </div>
       </motion.div>

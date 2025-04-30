@@ -46,44 +46,44 @@ export default function TextResult({ text }: TextResultProps) {
       className="mt-8 space-y-4"
     >
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-medium text-blue-900">Kết quả trích xuất</h3>
+        <h3 className="text-lg font-medium text-blue-900">Extraction Result</h3>
         <div className="flex gap-2">
-          <Button 
-            variant="outline" 
-            size="sm" 
+          <Button
+            variant="outline"
+            size="sm"
             onClick={handleCopy}
             className="flex items-center gap-1"
           >
             {copied ? (
               <>
                 <Check className="h-4 w-4" />
-                <span>Đã sao chép</span>
+                <span>Copied</span>
               </>
             ) : (
               <>
                 <Copy className="h-4 w-4" />
-                <span>Sao chép</span>
+                <span>Copy</span>
               </>
             )}
           </Button>
-          <Button 
-            variant="outline" 
-            size="sm" 
+          <Button
+            variant="outline"
+            size="sm"
             onClick={handleDownload}
             className="flex items-center gap-1"
           >
             <Download className="h-4 w-4" />
-            <span>Tải xuống</span>
+            <span>Download</span>
           </Button>
         </div>
       </div>
-      
+
       <motion.div
         variants={scaleIn(0.3)}
         className="rounded-lg border border-gray-200 overflow-hidden"
       >
         <div className="bg-gray-100 px-4 py-2 border-b border-gray-200">
-          <span className="text-sm font-medium text-gray-700">Văn bản</span>
+          <span className="text-sm font-medium text-gray-700">Text</span>
         </div>
         <div className="max-h-[500px] overflow-auto p-4">
           <pre className="whitespace-pre-wrap text-sm text-gray-700">{text}</pre>
