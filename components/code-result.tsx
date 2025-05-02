@@ -160,15 +160,6 @@ export default function CodeResult({ text }: CodeResultProps) {
               </>
             )}
           </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleDownload}
-            className="flex items-center gap-1"
-          >
-            <Download className="h-4 w-4" />
-            <span>Download</span>
-          </Button>
         </div>
       </div>
 

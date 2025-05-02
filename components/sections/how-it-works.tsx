@@ -38,7 +38,7 @@ export default function HowItWorks() {
               <h3 className="text-xl font-bold text-blue-900">{step.title}</h3>
               <p className="text-gray-600 text-center">{step.description}</p>
               {i < 2 && (
-                <div className="hidden md:block absolute top-10 left-[calc(100%_-_20px)] w-[calc(100%_-_40px)] h-0.5 bg-blue-200"></div>
+                <div className="hidden md:block absolute top-7 left-[calc(100%_-_105px)] w-[calc(100%_-_100px)] h-0.5 bg-blue-200"></div>
               )}
             </div>
           ))}
