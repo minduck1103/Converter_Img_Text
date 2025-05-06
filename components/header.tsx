@@ -36,7 +36,7 @@ export default function Header() {
             animate="show"
           >
             <ImageIcon className="h-6 w-6 text-cyan-500" />
-            <span className="text-xl font-extrabold bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent drop-shadow">ImageToText</span>
+            <span className="text-xl font-extrabold bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent drop-shadow">ImageConverter</span>
           </motion.div>
         </Link>
         <nav className="hidden md:flex gap-6">
