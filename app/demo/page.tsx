@@ -94,15 +94,15 @@ function DemoPage() {
   const getInfoMessage = () => {
     switch (type) {
       case "text":
-        return "The system uses Google's Gemini 1.5 Pro model to extract text from images with high accuracy and speed."
+        return "The system uses Google's Gemini 1.5 Flash model to extract text from images with high accuracy and speed."
       case "code":
-        return "The system uses Google's Gemini 1.5 Pro model to recognize and extract source code from images, supporting various programming languages."
+        return "The system uses Google's Gemini 1.5 Flash model to recognize and extract source code from images, supporting various programming languages."
       case "table":
-        return "The system uses Google's Gemini 1.5 Pro model to recognize table structures and convert them into structured data like CSV or JSON."
+        return "The system uses Google's Gemini 1.5 Flash model to recognize table structures and convert them into structured data like CSV or JSON."
       case "math":
-        return "The system uses Google's Gemini 1.5 Pro model to recognize math formulas and convert them into LaTeX format."
+        return "The system uses Google's Gemini 1.5 Flash model to recognize math formulas and convert them into LaTeX format."
       default:
-        return "The system uses Google's Gemini 1.5 Pro model to extract text from images with high accuracy and speed."
+        return "The system uses Google's Gemini 1.5 Flash model to extract text from images with high accuracy and speed."
     }
   }
 
@@ -273,7 +273,36 @@ function DemoPage() {
                         <Alert variant="destructive" className="mt-6">
                           <AlertCircle className="h-4 w-4" />
                           <AlertTitle>Error</AlertTitle>
-                          <AlertDescription>{error}</AlertDescription>
+                          <AlertDescription className="space-y-3">
+                            <p>{error}</p>
+                            {error.includes("quota") || error.includes("429") ? (
+                              <div className="space-y-2">
+                                <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                                  <h4 className="font-medium text-blue-800 mb-2">💡 Giải pháp:</h4>
+                                  <ul className="text-sm text-blue-700 space-y-1">
+                                    <li>• Đợi một vài phút trước khi thử lại</li>
+                                    <li>• Gói miễn phí có giới hạn 15 request/phút</li>
+                                    <li>• Thử sử dụng chức năng "Text" thay vì "Code" (ít tốn quota hơn)</li>
+                                  </ul>
+                                </div>
+                                <Button 
+                                  onClick={handleReset}
+                                  variant="outline" 
+                                  className="border-blue-300 text-blue-700 hover:bg-blue-50"
+                                >
+                                  Thử lại sau
+                                </Button>
+                              </div>
+                            ) : (
+                              <Button 
+                                onClick={handleReset}
+                                variant="outline" 
+                                className="border-red-300 text-red-700 hover:bg-red-50"
+                              >
+                                Thử lại
+                              </Button>
+                            )}
+                          </AlertDescription>
                         </Alert>
                       )}
                       {debugInfo && (

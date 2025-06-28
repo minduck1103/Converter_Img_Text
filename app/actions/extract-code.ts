@@ -1,17 +1,18 @@
 "use server"
 
 import { GoogleGenerativeAI } from "@google/generative-ai"
+import { getErrorMessage, shouldRetry, calculateRetryDelay } from "@/lib/api-limits"
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "")
 
-export async function extractCodeFromImage(base64Image: string) {
+export async function extractCodeFromImage(base64Image: string, retryCount: number = 0) {
   try {
     // Kiểm tra API key
     if (!process.env.GEMINI_API_KEY) {
       throw new Error("GEMINI_API_KEY không được cấu hình")
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" })
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" })
 
     const prompt = `Extract and identify the programming language from this image. Format the response exactly as follows:
     Language: [language name]
@@ -58,9 +59,24 @@ export async function extractCodeFromImage(base64Image: string) {
     }
   } catch (error: any) {
     console.error("Error extracting code:", error)
+    
+    // Sử dụng utility function để xử lý lỗi
+    const errorMessage = getErrorMessage(error)
+    
+    // Kiểm tra xem có nên retry hay không
+    if (shouldRetry(error, retryCount)) {
+      const waitTime = calculateRetryDelay(retryCount)
+      console.log(`Quota exceeded, waiting ${waitTime/1000}s before retry ${retryCount + 1}/3`)
+      
+      return {
+        success: false,
+        error: `Đã vượt quá giới hạn API. Vui lòng đợi ${waitTime/1000} giây trước khi thử lại... (Lần thử ${retryCount + 1}/3)`
+      }
+    }
+
     return {
       success: false,
-      error: error.message || "Failed to extract code from image"
+      error: errorMessage
     }
   }
 } 
